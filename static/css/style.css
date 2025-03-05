@@ -1,0 +1,115 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    text-align:  center;
+    padding: 20px;
+    background-color: #f8f8f8;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+header nav {}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
+
+.hero {
+    text-align: center;
+    padding: 50px;
+    background: url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
+    color: black;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.hero .btn {
+    background-color: #ff6f61;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.destinations {
+    padding: 50px;
+    text-align: center;
+}
+
+.destinations .cards {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.destinations .card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+    text-align: center;
+}
+
+.destinations .card img {
+    width: 100%;
+    height: auto;
+}
+
+.newsletter {
+    text-align: center;
+    padding: 30px;
+    background: #ff6f61;
+    color: white;
+}
+
+.newsletter form {
+    margin-top: 20px;
+}
+
+.newsletter input {
+    padding: 10px;
+    width: 300px;
+    border: none;
+    border-radius: 5px;
+}
+
+.newsletter .btn {
+    background-color: white;
+    color: #ff6f61;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+

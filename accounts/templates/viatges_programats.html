@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Viatges Programats</h1>
+
+{% if viatges %}
+    <ul>
+        {% for viatge in viatges %}
+            <li>
+                <h2>{{ viatge.destinacio }}</h2>
+                <p>Inici: {{ viatge.data_inici }}</p>
+                <p>Fi: {{ viatge.data_fi }}</p>
+                <p>{{ viatge.descripcio }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No tens cap viatge programat.</p>
+{% endif %}
+
+<div class="nous">
+    <h2>Vols planificar el teu viatge?</h2>
+    <a href="opcions_viatge.html" class="btn">Planificar un viatge</a>
+
+</div>
+{% endblock %}

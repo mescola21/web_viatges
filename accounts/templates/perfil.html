@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <img src="{{ user.avatar.url }}" alt="Avatar" class="img-fluid rounded-circle mb-3" width="150" height="150">
+                    <h4 class="card-title">{{ user.username }}</h4>
+                    <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
+                    <a href="#" class="btn btn-primary btn-sm">Editar perfil</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Els meus viatges</h5>
+                </div>
+                <div class="card-body">
+                    {% if viatges %}
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Destinacio</th>
+                                        <th>Sortida</th>
+                                        <th>Tornada</th>
+                                        <th>Descripció</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for viatge in viatges %}
+                                        <tr>
+                                            <td>{{ viatge.destinacio }}</td>
+                                            <td>{{ viatge.data_inici }}</td>
+                                            <td>{{ viatge.data_fi }}</td>
+                                            <td>{{ viatge.descripcio }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <p class="text-muted text-center">Encara no has fet cap viatge. A què esperes?</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

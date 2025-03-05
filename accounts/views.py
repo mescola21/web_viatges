@@ -24,3 +24,8 @@ def register(request):
 def viatges_programats(request):
     viatges = Viatge.objects.filter(user=request.user)
     return render(request, 'viatges_programats.html', {'viatges': viatges })
+
+@login_required
+def perfil(request):
+    viatges = Viatge.objects.filter(user=request.user)
+    return render(request, 'perfil.html', {'user' : request.user, 'viatges' : viatges })

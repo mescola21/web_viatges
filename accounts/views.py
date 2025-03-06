@@ -29,3 +29,4 @@ def viatges_programats(request):
 def perfil(request):
     viatges = Viatge.objects.filter(user=request.user)
     return render(request, 'perfil.html', {'user' : request.user, 'viatges' : viatges })
+

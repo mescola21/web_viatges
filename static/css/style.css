@@ -1,115 +1,208 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+/* Sección de saludo para el visitante */
+.alert-info {
+    background-color: #f0f8ff !important; /* Color suave de fondo para la alerta */
+    border-radius: 15px !important; /* Bordes redondeados */
+    padding: 30px 20px !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
 }
 
-header {
-    text-align:  center;
-    padding: 20px;
-    background-color: #f8f8f8;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+.alert-info h3 {
+    font-size: 2em !important;
+    color: #333 !important;
+    margin-bottom: 10px !important;
 }
 
-header nav {}
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
+.alert-info p {
+    font-size: 1.2em !important;
 }
 
-li {
-  float: left;
+.alert-info a {
+    margin: 10px !important;
 }
 
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  transition:  0.1s ease-in-out;
+.btn-lg {
+    padding: 12px 30px !important;
+    font-size: 1.1em !important;
+    border-radius: 25px !important; /* Botones con bordes redondeados */
+    transition: background-color 0.3s !important;
 }
 
-li a:hover {
-  background-color: #111;
+.btn-primary:hover, .btn-success:hover {
+    background-color: #e2574c !important; /* Hover de los botones */
 }
 
 .hero {
-    text-align: center;
-    padding: 50px;
-    background: url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
-    color: black;
+    text-align: center !important;
+    background-color: #222 !important;
+    color: white !important;
+    padding: 50px 0 !important;
 }
 
 .hero h1 {
-    font-size: 3em;
-    margin-bottom: 20px;
+    font-size: 3.5em !important;
+    margin-bottom: 20px !important;
+}
+
+.hero p {
+    font-size: 1.5em !important;
+    margin-bottom: 30px !important;
 }
 
 .hero .btn {
-    background-color: #ff6f61;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
+    background-color: #ff6f61 !important; /* Color de botón */
+    color: white !important;
+    border-radius: 5px !important;
+    padding: 15px 30px !important;
+    text-decoration: none !important;
 }
 
-.destinations {
-    padding: 50px;
-    text-align: center;
+.hero .btn:hover {
+    background-color: #e2574c !important; /* Hover para el botón */
 }
 
+/* Estilos para las tarjetas de destinos */
 .destinations .cards {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    margin-top: 20px;
+    display: flex !important;
+    justify-content: space-around !important;
+    gap: 20px !important;
+    margin-top: 40px !important;
 }
 
 .destinations .card {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    width: 300px;
-    text-align: center;
+    background-color: #fff !important;
+    border: 1px solid #ddd !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
+    transition: transform 0.3s ease-in-out !important;
+    width: 30% !important;
+    text-align: center !important;
+}
+
+.destinations .card:hover {
+    transform: scale(1.05) !important; /* Efecto de hover para agrandar las tarjetas */
 }
 
 .destinations .card img {
-    width: 100%;
-    height: auto;
+    width: 100% !important;
+    height: 200px !important;
+    object-fit: cover !important;
+}
+
+.destinations .card h3 {
+    font-size: 1.5em !important;
+    margin: 15px 0 !important;
+}
+
+.destinations .card p {
+    font-size: 1.1em !important;
+    margin-bottom: 20px !important;
 }
 
 .newsletter {
-    text-align: center;
-    padding: 30px;
-    background: #ff6f61;
-    color: white;
+    background-color: #222 !important;
+    color: white !important;
+    padding: 40px 0 !important;
+    text-align: center !important;
 }
 
-.newsletter form {
-    margin-top: 20px;
+.newsletter h2 {
+    font-size: 2.5em !important;
+    margin-bottom: 20px !important;
 }
 
-.newsletter input {
-    padding: 10px;
-    width: 300px;
-    border: none;
-    border-radius: 5px;
+.newsletter p {
+    font-size: 1.2em !important;
+    margin-bottom: 30px !important;
 }
 
-.newsletter .btn {
-    background-color: white;
-    color: #ff6f61;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.newsletter input[type="email"] {
+    padding: 10px 20px !important;
+    font-size: 1.1em !important;
+    border-radius: 25px !important;
+    width: 50% !important;
+    margin-right: 10px !important;
+    border: 1px solid #ddd !important;
 }
 
+.newsletter button {
+    padding: 12px 30px !important;
+    background-color: #ff6f61 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 25px !important;
+    font-size: 1.1em !important;
+    cursor: pointer !important;
+}
 
+.newsletter button:hover {
+    background-color: #e2574c !important; /* Hover para el botón */
+}
+
+/* Estilos de la navbar */
+nav {
+    background-color: #333 !important; /* Fondo oscuro */
+    padding: 10px 0 !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important; /* Añadimos sombra sutil */
+}
+
+ul.nav {
+    list-style-type: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    justify-content: center !important; /* Centra los elementos de la navbar */
+    align-items: center !important;
+}
+
+ul.nav li {
+    margin: 0 10px !important; /* Espacio entre los elementos de la navbar */
+}
+
+ul.nav li a, ul.nav li .btn {
+    display: block !important;
+    color: white !important;
+    text-align: center !important;
+    padding: 10px 20px !important;
+    text-decoration: none !important;
+    border-radius: 5px !important;
+    transition: background-color 0.2s ease-in-out !important;
+}
+
+ul.nav li a:hover, ul.nav li .btn:hover {
+    background-color: #ff6f61 !important; /* Color de hover similar al resto del sitio */
+    color: white !important;
+}
+
+/* Botón de la navbar sin borde */
+ul.nav li a, ul.nav li .btn {
+    border: none !important; /* Eliminar el borde */
+    background-color: transparent !important; /* Fondo transparente por defecto */
+}
+
+/* Botones específicos */
+ul.nav li .btn-primary {
+    background-color: #ff6f61 !important; /* Color base para los botones */
+    border: none !important;
+}
+
+ul.nav li .btn-danger {
+    background-color: #ff6f61 !important; /* Botón rojo */
+    border: none !important;
+}
+
+ul.nav li .btn-primary:hover, ul.nav li .btn-danger:hover {
+    background-color: #e2574c !important; /* Hover para los botones */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    ul.nav {
+        flex-direction: column !important; /* Para pantallas más pequeñas, que los elementos se apilen */
+        align-items: flex-start !important;
+    }
+
+    ul.nav li {
+        margin: 5px 0 !important; /* Menos margen en pantallas pequeñas */
+    }
+}

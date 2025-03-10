@@ -4,32 +4,35 @@
   <div class="hero">
       <h1>Descobreix el món amb nosaltres!</h1>
       <p>Inspira't amb les millors destinacions i les millors ofertes.</p>
-      <a href="#" class="btn">Comença ara</a>
+      <a href="#" class="btn btn-light">Comença ara</a>
   </div>
 
   {% if user.is_authenticated %}
-    <p>Hola, {{ user.username }}!</p>
-    <a href="/accounts/profile/">Anar al teu perfil</a>
+
   {% else %}
-    <p>Hola, visitant! Si us plau, <a href="/accounts/login/">inicia sessió</a> o <a href="/accounts/register/">registra't</a>.</p>
+    <div class="alert alert-info text-center">
+      <h3>Hola, visitant!</h3>
+      <p>Si us plau, <a href="/accounts/login/" class="btn btn-primary btn-lg">Inicia sessió</a> o
+      <a href="/accounts/register/" class="btn btn-success btn-lg">Registra't aquí</a>.</p>
+    </div>
   {% endif %}
-    
+
   <div class="destinations">
       <h2>Destinacions Populars</h2>
       <div class="cards">
           <div class="card">
               {% load static %}
-              <img src="{%  static 'images/paris.jpg' %}" alt="París">
+              <img src="{% static 'images/paris.jpg' %}" alt="París">
               <h3>París</h3>
               <p>Descobreix la ciutat de l'amor.</p>
           </div>
           <div class="card">
-              <img src="{%  static 'images/bali.jpg' %}" alt="Bali">
+              <img src="{% static 'images/bali.jpg' %}" alt="Bali">
               <h3>Bali</h3>
               <p>Gaudeix d'un paradís tropical.</p>
           </div>
           <div class="card">
-              <img src="{%  static 'images/newyork.jpg  ' %}" alt="Nova York">
+              <img src="{% static 'images/newyork.jpg' %}" alt="Nova York">
               <h3>Nova York</h3>
               <p>Explora la ciutat que mai dorm.</p>
           </div>
@@ -41,7 +44,7 @@
       <p>Rep les millors ofertes i inspiració directament al teu correu.</p>
       <form>
           <input type="email" placeholder="Introdueix el teu correu">
-          <button type="submit" class="btn">Subscriu-te</button>
+          <button type="submit" class="btn btn-light">Subscriu-te</button>
       </form>
   </div>
 {% endblock %}

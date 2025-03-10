@@ -11,24 +11,7 @@
 <body>
     <header>
         <h1>Web de Viatges</h1>
-        <nav>
-            <ul class="nav">
-                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                {% if user.is_authenticated %}
-                    <!-- Formulario de logout con el estilo de la navbar -->
-                    <li class="nav-item">
-                        <form action="{% url 'logout' %}" method="post" class="d-inline">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-outline-danger">Tanca sessió</button>
-                        </form>
-                    </li>
-                {% else %}
-                    <!-- Enlaces de login y registro si no está autenticado -->
-                    <li class="nav-item"><a class="nav-link" href="/accounts/login/">Login</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/accounts/register/">Registre</a></li>
-                {% endif %}
-            </ul>
-        </nav>
+        {% include 'navbar.html' %}
     </header>
     <main>
         {% block content %}

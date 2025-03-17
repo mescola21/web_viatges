@@ -9,4 +9,5 @@ urlpatterns = [
     path('register/', views.register, name='register'),  # Ruta per al registre
     path('viatges_programats/', views.viatges_programats, name='viatges_programats'),
     path('profile/', views.perfil, name='profile'),
+    path('viatges/', views.llista_viatges, name='viatges'),
 ]

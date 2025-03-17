@@ -30,3 +30,13 @@ def perfil(request):
     viatges = Viatge.objects.filter(user=request.user)
     return render(request, 'perfil.html', {'user' : request.user, 'viatges' : viatges })
 
+@login_required
+def llista_viatges(request):
+    viatges = Viatge.objects.all()
+    return render(request, 'opcions_viatge.html', {'viatges': viatges})
+
+@login_required
+def cerca_viatges(request, name):
+    name = name.lower()
+    viatges = Viatge.objects.filter(name=name)
+    return render(request, 'opcions_viatge.html', {'viatges': viatges})

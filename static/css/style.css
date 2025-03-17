@@ -206,3 +206,8 @@ ul.nav li .btn-primary:hover, ul.nav li .btn-danger:hover {
         margin: 5px 0 !important; /* Menos margen en pantallas pequeñas */
     }
 }
+
+
+.destinations {
+    padding-top: 20px !important;
+}

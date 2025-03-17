@@ -1,10 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Viatges Programats</h1>
+
+    <!-- Barra de filtres -->
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <input type="text" id="filter-destinacio" class="form-control" placeholder="Filtrar per destinació">
+        </div>
+        <div class="col-md-4">
+            <input type="text" id="filter-pais" class="form-control" placeholder="Filtrar per país">
+        </div>
+        <div class="col-md-4">
+            <input type="text" id="filter-continent" class="form-control" placeholder="Filtrar per continent">
+        </div>
+    </div>
+
+    {% if viatges %}
+        <div class="row" id="viatges-container">
+            {% for viatge in viatges %}
+                <div class="col-md-4 mb-4 viatge-card"
+                     data-destinacio="{{ viatge.destinacio|lower }}"
+                     data-pais="{{ viatge.pais|lower }}"
+                     data-continent="{{ viatge.continent|lower }}">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h2 class="card-title">{{ viatge.destinacio }}</h2>
+                            <p class="card-text"><strong>Inici:</strong> {{ viatge.data_inici }}</p>
+                            <p class="card-text"><strong>Fi:</strong> {{ viatge.data_fi }}</p>
+                            <p class="card-text">{{ viatge.descripcio }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-center">No tens cap viatge programat.</p>
+    {% endif %}
+
+    <div class="text-center mt-4">
+        <h2>Vols planificar el teu viatge?</h2>
+        <a href="opcions_viatge.html" class="btn btn-primary">Planificar un viatge</a>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const inputs = document.querySelectorAll("#filter-destinacio, #filter-pais, #filter-continent");
+        inputs.forEach(input => {
+            input.addEventListener("input", function() {
+                const destinacio = document.getElementById("filter-destinacio").value.toLowerCase();
+                const pais = document.getElementById("filter-pais").value.toLowerCase();
+                const continent = document.getElementById("filter-continent").value.toLowerCase();
+
+                document.querySelectorAll(".viatge-card").forEach(card => {
+                    const matchDestinacio = card.getAttribute("data-destinacio").includes(destinacio);
+                    const matchPais = card.getAttribute("data-pais").includes(pais);
+                    const matchContinent = card.getAttribute("data-continent").includes(continent);
+
+                    if (matchDestinacio && matchPais && matchContinent) {
+                        card.style.display = "block";
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
+            });
+        });
+    });
+</script>
+{% endblock %}

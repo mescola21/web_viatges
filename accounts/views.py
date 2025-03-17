@@ -1,11 +1,9 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
 
-# Create your views here.
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
-from .models import Viatge
+from .models import *
 
 def register(request):
     if request.method == 'POST':
@@ -32,11 +30,11 @@ def perfil(request):
 
 @login_required
 def llista_viatges(request):
-    viatges = Viatge.objects.all()
+    viatges = Destinacio.objects.all()
     return render(request, 'opcions_viatge.html', {'viatges': viatges})
 
 @login_required
 def cerca_viatges(request, name):
     name = name.lower()
-    viatges = Viatge.objects.filter(name=name)
+    viatges = Destinacio.objects.filter(name=name)
     return render(request, 'opcions_viatge.html', {'viatges': viatges})

@@ -1,50 +1,101 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
 
 {% block content %}
-  <div class="hero">
-      <h1>Descobreix el món amb nosaltres!</h1>
-      <p>Inspira't amb les millors destinacions i les millors ofertes.</p>
-      <a href="/accounts/viatges" class="btn btn-light">Comença ara</a>
-  </div>
-
-  {% if user.is_authenticated %}
-
-  {% else %}
-    <div class="alert alert-info text-center">
-      <h3>Hola, visitant!</h3>
-      <p>Si us plau, <a href="/accounts/login/" class="btn btn-primary btn-lg">Inicia sessió</a> o
-      <a href="/accounts/register/" class="btn btn-success btn-lg">Registra't aquí</a>.</p>
+<body class="home-page"> <!-- Añade la clase home-page al body -->
+    <div class="hero">
+        <!-- Capa opaca para la imagen de fondo -->
+        <div class="hero-overlay"></div>
+        <h1 class="title">Descobreix el món amb nosaltres!</h1>
+        <p class="title">Inspira't amb les millors destinacions i les millors ofertes.</p>
+        <a href="/accounts/viatges" class="btn btn-light">Comença ara</a>
     </div>
-  {% endif %}
 
-  <div class="destinations">
-      <h2>Les destinacions més populars:</h2>
-      <div class="cards">
-          <div class="card mb-4">
-              {% load static %}
-              <img src="{% static 'images/paris.jpg' %}" alt="París">
-              <h3>París</h3>
-              <p>Descobreix la ciutat de l'amor.</p>
-          </div>
-          <div class="card mb-4">
-              <img src="{% static 'images/bali.jpg' %}" alt="Bali">
-              <h3>Bali</h3>
-              <p>Gaudeix d'un paradís tropical.</p>
-          </div>
-          <div class="card mb-4">
-              <img src="{% static 'images/newyork.jpg' %}" alt="Nova York">
-              <h3>Nova York</h3>
-              <p>Explora la ciutat que mai dorm.</p>
-          </div>
-      </div>
-  </div>
+    {% if user.is_authenticated %}
+    {% else %}
+    <div class="alert alert-info text-center">
+        <h3>Hola, visitant!</h3>
+        <p>Si us plau, <a href="/accounts/login/" class="btn btn-primary btn-lg">Inicia sessió</a> o
+        <a href="/accounts/register/" class="btn btn-success btn-lg">Registra't aquí</a>.</p>
+    </div>
+    {% endif %}
 
-  <div class="newsletter">
-      <h2>Subscriu-te al nostre butlletí</h2>
-      <p>Rep les millors ofertes i inspiració directament al teu correu.</p>
-      <form>
-          <input type="email" placeholder="Introdueix el teu correu">
-          <button type="submit" class="btn btn-light">Subscriu-te</button>
-      </form>
-  </div>
+    <div class="destinations">
+        <h2>Les destinacions més populars:</h2>
+        <div class="cards">
+            <div class="card mb-4">
+                {% load static %}
+                <img src="{% static 'images/paris.jpg' %}" alt="París">
+                <h3>París</h3>
+                <p>Descobreix la ciutat de l'amor.</p>
+            </div>
+            <div class="card mb-4">
+                <img src="{% static 'images/bali.jpg' %}" alt="Bali">
+                <h3>Bali</h3>
+                <p>Gaudeix d'un paradís tropical.</p>
+            </div>
+            <div class="card mb-4">
+                <img src="{% static 'images/newyork.jpg' %}" alt="Nova York">
+                <h3>Nova York</h3>
+                <p>Explora la ciutat que mai dorm.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="why-travel text-center my-5">
+        <h2 class="mb-4">Per què viatjar amb nosaltres?</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="feature p-4 border rounded shadow-sm text-center">
+                    <i class="fas fa-plane fa-3x mb-3"></i>
+                    <h3 class="h5">Les millors ofertes</h3>
+                    <p>Troba els millors preus en vols i hotels.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="feature p-4 border rounded shadow-sm text-center">
+                    <i class="fas fa-globe fa-3x mb-3"></i>
+                    <h3 class="h5">Destinacions úniques</h3>
+                    <p>Descobreix llocs increïbles i exòtics.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="feature p-4 border rounded shadow-sm text-center">
+                    <i class="fas fa-headset fa-3x mb-3"></i>
+                    <h3 class="h5">Atenció personalitzada</h3>
+                    <p>Assistència 24/7 en tots els teus viatges.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="newsletter">
+        <h2>Subscriu-te al nostre butlletí</h2>
+        <p>Rep les millors ofertes i inspiració directament al teu correu.</p>
+        <form>
+            <input type="email" placeholder="Introdueix el teu correu">
+            <button type="submit" class="btn btn-light">Subscriu-te</button>
+        </form>
+    </div>
+
+    <script>
+    // Detectar el scroll y cambiar el color de la navbar solo en home.html
+    document.addEventListener('DOMContentLoaded', function() {
+        if (document.body.classList.contains('home-page')) {
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('nav');
+                if (window.scrollY > 0) {
+                    navbar.classList.add('scrolled'); // Añadir clase cuando se hace scroll
+                } else {
+                    navbar.classList.remove('scrolled'); // Eliminar clase cuando está al principio
+                }
+            });
+        }
+    });
+    </script>
+</body>
 {% endblock %}

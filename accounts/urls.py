@@ -10,4 +10,5 @@ urlpatterns = [
     path('viatges_programats/', views.viatges_programats, name='viatges_programats'),
     path('profile/', views.perfil, name='profile'),
     path('viatges/', views.llista_viatges, name='viatges'),
+    path('eliminar_viatge/<int:viatge_id>/', views.eliminar_viatge, name='eliminar_viatge'),
 ]

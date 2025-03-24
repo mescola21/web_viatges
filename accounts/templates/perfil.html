@@ -21,31 +21,39 @@
                 </div>
                 <div class="card-body">
                     {% if viatges %}
-                        <div class="table-responsive">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Destinacio</th>
-                                        <th>Sortida</th>
-                                        <th>Tornada</th>
-                                        <th>Descripció</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for viatge in viatges %}
-                                        <tr>
-                                            <td>{{ viatge.destinacio }}</td>
-                                            <td>{{ viatge.data_inici }}</td>
-                                            <td>{{ viatge.data_fi }}</td>
-                                            <td>{{ viatge.descripcio }}</td>
-                                        </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-                    {% else %}
-                        <p class="text-muted text-center">Encara no has fet cap viatge. A què esperes?</p>
-                    {% endif %}
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Destinació</th>
+                    <th>Sortida</th>
+                    <th>Tornada</th>
+                    <th>Descripció</th>
+                    <th>Accions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for viatge in viatges %}
+                    <tr>
+                        <td>{{ viatge.destinacio }}</td>
+                        <td>{{ viatge.data_inici }}</td>
+                        <td>{{ viatge.data_fi }}</td>
+                        <td>{{ viatge.descripcio }}</td>
+                        <td>
+                            <form action="{% url 'eliminar_viatge' viatge.id %}" method="POST" onsubmit="return confirm('Estàs segur que vols eliminar aquest viatge?');">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <p class="text-muted text-center">Encara no has fet cap viatge. A què esperes?</p>
+{% endif %}
+
                 </div>
             </div>
         </div>

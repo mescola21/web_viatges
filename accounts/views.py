@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from .models import *
@@ -33,8 +33,9 @@ def llista_viatges(request):
     viatges = Destinacio.objects.all()
     return render(request, 'opcions_viatge.html', {'viatges': viatges})
 
+
 @login_required
-def cerca_viatges(request, name):
-    name = name.lower()
-    viatges = Destinacio.objects.filter(name=name)
-    return render(request, 'opcions_viatge.html', {'viatges': viatges})
+def eliminar_viatge(request, viatge_id):
+    viatge = get_object_or_404(Viatge, id=viatge_id)
+    viatge.delete()
+    return redirect('/accounts/profile')

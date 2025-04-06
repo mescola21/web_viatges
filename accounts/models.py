@@ -14,3 +14,11 @@ class Viatge(models.Model):
         return f"{self.destinacio} ({self.data_inici} - {self.data_fi})"
 
 # Create your models here.
+
+class Destinacio(models.Model):
+    nom = models.CharField(max_length=100)
+    pais = models.CharField(max_length=100)
+    continent = models.CharField(max_length=100)
+
+    def __Str__(self):
+        return f"{self.nom} ({self.pais.upper()})"

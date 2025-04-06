@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% load static %}
 
-</body>
-</html>
+{% block content %}
+<div class="opcions-viatge">
+    <h2>Planifica el teu viatge</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label for="destinacio">Destinació:</label>
+        <input type="text" name="destinacio" required>
+
+        <label for="data_inici">Data d'inici:</label>
+        <input type="date" name="data_inici" required>
+
+        <label for="data_fi">Data de fi:</label>
+        <input type="date" name="data_fi" required>
+
+        <label for="descripcio">Descripció del viatge:</label>
+        <textarea name="descripcio" rows="4" placeholder="Explica una mica què faràs..."></textarea>
+
+        <button type="submit">Crear viatge</button>
+    </form>
+
+    {% if missatge %}
+        <p class="missatge">{{ missatge }}</p>
+    {% endif %}
+</div>
+{% endblock %}

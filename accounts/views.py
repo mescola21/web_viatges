@@ -24,3 +24,26 @@ def register(request):
 def viatges_programats(request):
     viatges = Viatge.objects.filter(user=request.user)
     return render(request, 'viatges_programats.html', {'viatges': viatges })
+
+
+
+@login_required
+def opcions_viatge(request):
+    if request.method == 'POST':
+        destinacio = request.POST['destinacio']
+        data_inici = request.POST['data_inici']
+        data_fi = request.POST['data_fi']
+        descripcio = request.POST.get('descripcio', '')
+
+        Viatge.objects.create(
+            user=request.user,
+            destinacio=destinacio,
+            data_inici=data_inici,
+            data_fi=data_fi,
+            descripcio=descripcio
+        )
+
+        missatge = "Viatge creat correctament!"
+        return render(request, 'opcions_viatge.html', {'missatge': missatge})
+
+    return render(request, 'opcions_viatge.html')

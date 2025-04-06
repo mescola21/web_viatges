@@ -9,7 +9,7 @@
 
   {% if user.is_authenticated %}
     <p>Hola, {{ user.username }}!</p>
-    <a href="/accounts/profile/">Anar al teu perfil</a>
+    <a href="accounts/viatges_programats/">Anar al teu perfil</a>
   {% else %}
     <p>Hola, visitant! Si us plau, <a href="/accounts/login/">inicia sessió</a> o <a href="/accounts/register/">registra't</a>.</p>
   {% endif %}

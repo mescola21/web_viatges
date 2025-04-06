@@ -112,4 +112,68 @@ li a:hover {
     cursor: pointer;
 }
 
+/* Estils exclusius per la pàgina opcions_viatge */
+.opcions-viatge {
+    max-width: 600px;
+    margin: 40px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.opcions-viatge h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #2c3e50;
+}
+
+.opcions-viatge label {
+    display: block;
+    margin-top: 15px;
+    color: #34495e;
+    font-weight: 600;
+}
+
+.opcions-viatge input[type="text"],
+.opcions-viatge input[type="date"],
+.opcions-viatge textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.opcions-viatge textarea {
+    resize: vertical;
+}
+
+.opcions-viatge button {
+    margin-top: 25px;
+    width: 100%;
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.opcions-viatge button:hover {
+    background-color: #2980b9;
+}
+
+.opcions-viatge .missatge {
+    text-align: center;
+    color: green;
+    margin-top: 15px;
+    font-weight: 600;
+}
+
 

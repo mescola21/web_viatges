@@ -6,6 +6,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from .models import Viatge
+from .models import Route
 
 def register(request):
     if request.method == 'POST':
@@ -47,3 +48,15 @@ def opcions_viatge(request):
         return render(request, 'opcions_viatge.html', {'missatge': missatge})
 
     return render(request, 'opcions_viatge.html')
+
+from django.shortcuts import render
+
+@login_required
+def mapa_llocs_turistics(request):
+    return render(request, 'mapa.html')  # o 'templates/mapa.html' si cal
+
+
+@login_required
+def llista_rutes(request):
+    rutes = Route.objects.filter(defecte=True)
+    return render(request, 'rutes/rutes.html', {'rutes': rutes})

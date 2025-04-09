@@ -10,4 +10,7 @@ urlpatterns = [
     path('viatges_programats/', views.viatges_programats, name='viatges_programats'),
 
     path('opcions_viatge/', views.opcions_viatge, name='opcions_viatge'),
+
+    path('mapa/', views.mapa_llocs_turistics, name='mapa'),
+    path('rutes/', views.llista_rutes, name='rutes'),
 ]

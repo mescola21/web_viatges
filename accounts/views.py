@@ -11,10 +11,10 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)  # Inicia sessió automàticament
+            login(request, user)
             PerfilUsuari.objects.create(
-                usuari=user,  # Relaciona el perfil con el usuario recién creado
-                avatar=None,  # Aquí puedes dejarlo vacío o asignar una imagen por defecto
+                usuari=user,
+                avatar=None,
                 descripcion=None,
                 nom_complet=None,
                 pais_origen=None,
@@ -81,13 +81,11 @@ def reserva(request, viatge_nom):
             )
             reserva.save()
 
-            # Mostrar página de éxito con los detalles de la reserva
             return render(request, 'reserva_exitosa.html', {'viatge': reserva, 'reserva': reserva})
 
     else:
         form = ReservaForm()
 
-    # Enviar el formulario en caso de que sea un GET o el formulario no sea válido
     return render(request, 'reserva_form.html', {'form': form, 'viatge': destinacio})
 
 

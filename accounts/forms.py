@@ -11,11 +11,11 @@ class PerfilUsuariForm(forms.ModelForm):
         model = PerfilUsuari
         fields = ['avatar', 'descripcion', 'nom_complet', 'pais_origen', 'data_naixement']
         labels = {
-            'avatar': 'Foto de perfil',  # Cambiar el nombre del campo de avatar
-            'descripcion': 'Descripció',  # Cambiar el nombre del campo de descripción
-            'nom_complet': 'Nom complet',  # Cambiar el nombre del campo de nombre completo
-            'pais_origen': 'País d\'origen',  # Cambiar el nombre del campo de país de origen
-            'data_naixement': 'Data de naixement',  # Cambiar el nombre del campo de fecha de nacimiento
+            'avatar': 'Foto de perfil',
+            'descripcion': 'Descripció',
+            'nom_complet': 'Nom complet',
+            'pais_origen': 'País d\'origen',
+            'data_naixement': 'Data de naixement',
         }
         help_texts = {
             'avatar': 'Pots pujar una imatge per al teu perfil.',

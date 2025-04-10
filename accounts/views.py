@@ -4,16 +4,22 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 
-from .forms import ReservaForm
 from .models import *
-from . import forms
-
+from .forms import *
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)  # Inicia sessió automàticament
+            PerfilUsuari.objects.create(
+                usuari=user,  # Relaciona el perfil con el usuario recién creado
+                avatar=None,  # Aquí puedes dejarlo vacío o asignar una imagen por defecto
+                descripcion=None,
+                nom_complet=None,
+                pais_origen=None,
+                data_naixement=None
+            )
             return redirect('/')  # Redirigeix a la pàgina principal
     else:
         form = UserCreationForm()
@@ -28,8 +34,14 @@ def viatges_programats(request):
 
 @login_required
 def perfil(request):
+    perfil = get_object_or_404(PerfilUsuari, usuari=request.user)
     viatges = Viatge.objects.filter(user=request.user)
-    return render(request, 'perfil.html', {'user' : request.user, 'viatges' : viatges })
+
+    context = {
+        'perfil': perfil,
+        'viatges': viatges
+    }
+    return render(request, 'perfil.html', context)
 
 @login_required
 def llista_viatges(request):
@@ -78,3 +90,17 @@ def reserva(request, viatge_nom):
     # Enviar el formulario en caso de que sea un GET o el formulario no sea válido
     return render(request, 'reserva_form.html', {'form': form, 'viatge': destinacio})
 
+
+@login_required
+def editar_perfil(request):
+    perfil = get_object_or_404(PerfilUsuari, usuari=request.user)
+
+    if request.method == 'POST':
+        form = PerfilUsuariForm(request.POST, request.FILES, instance=perfil)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = PerfilUsuariForm(instance=perfil)
+
+    return render(request, 'editar_perfil.html', {'form': form})

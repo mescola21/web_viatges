@@ -9,11 +9,13 @@ RUN pip install poetry
 COPY pyproject.toml poetry.lock ./
 
 # Copia el código fuente
-COPY . .
+
 
 # Configura Poetry para no crear virtualenv y luego instala las dependencias
 RUN poetry config virtualenvs.create false \
     && poetry install --no-interaction --no-ansi --no-root
+
+COPY . .
 
 # Expone el puerto 8000 de Django
 EXPOSE 8000

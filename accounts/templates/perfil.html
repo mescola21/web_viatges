@@ -6,10 +6,16 @@
         <div class="col-md-4">
             <div class="card shadow-sm">
                 <div class="card-body text-center">
-                    <img src="{{ user.avatar.url }}" alt="Avatar" class="img-fluid rounded-circle mb-3" width="150" height="150">
+
+                    <img src="https://via.placeholder.com/150" alt="Foto de perfil predeterminada" class="img-fluid rounded-circle mb-3" width="150" height="150">
+
                     <h4 class="card-title">{{ user.username }}</h4>
                     <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
-                    <a href="#" class="btn btn-primary btn-sm">Editar perfil</a>
+                    <p class="card-text"><strong>Nom complet:</strong> {{ user.perfil.nom_complet }}</p>
+                    <p class="card-text"><strong>País d'origen:</strong> {{ user.perfil.pais_origen }}</p>
+                    <p class="card-text"><strong>Data de naixement:</strong> {{ user.perfil.data_naixement }}</p>
+                    <p class="card-text"><strong>Descripció:</strong> {{ user.perfil.descripcion }}</p>
+                    <a href="{% url 'editar_perfil' %}" class="btn btn-primary btn-sm">Editar perfil</a>
                 </div>
             </div>
         </div>
@@ -21,39 +27,38 @@
                 </div>
                 <div class="card-body">
                     {% if viatges %}
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Destinació</th>
-                    <th>Sortida</th>
-                    <th>Tornada</th>
-                    <th>Descripció</th>
-                    <th>Accions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for viatge in viatges %}
-                    <tr>
-                        <td>{{ viatge.destinacio }}</td>
-                        <td>{{ viatge.data_inici }}</td>
-                        <td>{{ viatge.data_fi }}</td>
-                        <td>{{ viatge.descripcio }}</td>
-                        <td>
-                            <form action="{% url 'eliminar_viatge' viatge.id %}" method="POST" onsubmit="return confirm('Estàs segur que vols eliminar aquest viatge?');">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                            </form>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-{% else %}
-    <p class="text-muted text-center">Encara no has fet cap viatge. A què esperes?</p>
-{% endif %}
-
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Destinació</th>
+                                    <th>Sortida</th>
+                                    <th>Tornada</th>
+                                    <th>Descripció</th>
+                                    <th>Accions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for viatge in viatges %}
+                                    <tr>
+                                        <td>{{ viatge.destinacio }}</td>
+                                        <td>{{ viatge.data_inici }}</td>
+                                        <td>{{ viatge.data_fi }}</td>
+                                        <td>{{ viatge.descripcio }}</td>
+                                        <td>
+                                            <form action="{% url 'eliminar_viatge' viatge.id %}" method="POST" onsubmit="return confirm('Estàs segur que vols eliminar aquest viatge?');">
+                                                {% csrf_token %}
+                                                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <p class="text-muted text-center">Encara no has fet cap viatge. A què esperes?</p>
+                    {% endif %}
                 </div>
             </div>
         </div>

@@ -9,6 +9,7 @@ packages = [{ include = "web_viatges" }]  # Asegúrate de que el nombre coincide
 [tool.poetry.dependencies]
 python = ">=3.11"
 django = ">=5.1.7,<6.0.0"
+pillow = "^11.1.0"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

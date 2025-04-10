@@ -12,4 +12,5 @@ urlpatterns = [
     path('viatges/', views.llista_viatges, name='viatges'),
     path('eliminar_viatge/<int:viatge_id>/', views.eliminar_viatge, name='eliminar_viatge'),
     path('reserva/<str:viatge_nom>/', views.reserva, name='reserva_viatge'),
+    path('editar_perfil', views.editar_perfil, name='editar_perfil'),
 ]

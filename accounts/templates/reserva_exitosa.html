@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">RESERVA CONFIRMADA!</h1>
+    <p class="text-center">Has reservat el viatge a <strong>{{ viatge.destinacio.nom }}</strong> del {{ reserva.data_inici }} al {{ reserva.data_fi }}.</p>
+    <p class="text-center">Número de persones: {{ reserva.num_persones }}</p>
+    <div class="text-center">
+        <a href="/" class="btn btn-primary">Tornar a la pàgina principal</a>
+    </div>
+</div>
+{% endblock %}

@@ -6,9 +6,13 @@
                 <a class="nav-link" href="{% url 'profile' %}">Perfil</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="{% url 'viatges' %}">Destinacions</a>
+            </li>
+            <li class="nav-item">
+            <li class="nav-item">
                 <form action="{% url 'logout' %}" method="post" class="d-inline">
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-primary">Tanca sessió</button>
+                    <button type="submit" class="btn btn-danger">Tanca sessió</button>
                 </form>
             </li>
 

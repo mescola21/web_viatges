@@ -1,6 +1,6 @@
 /* Contenedor principal Hero: Sección en la que se muestra el fondo */
 .hero {
-    background: url('/static/images/fondo.jpg') center/cover no-repeat;
+    background: url('/static/images/fondo4.jpg') center/cover no-repeat;
     height: 100vh; /* Ocupa toda la altura de la pantalla */
     color: white;
     display: flex;
@@ -29,16 +29,21 @@
     text-decoration: none;
     font-size: 1.2em;
 }
-/* Estilos de la barra de navegación solo para la página de inicio */
-.home-page nav {
-    background-color: transparent;
-    transition: background-color 0.3s ease-in-out;
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
 
-.home-page nav.scrolled {
-    background-color: #333;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.cards .card {
+    flex: 1 1 300px; /* mínimo 300px, pero se adapta */
+    max-width: 30%;
+    min-width: 250px;
 }
+
+
+
 .hero .btn:hover {
     background-color: #e2574c;
 }
@@ -55,13 +60,7 @@
     margin-bottom: 40px;
 }
 
-.destinations .cards {
-    display: flex;
-    justify-content: space-around;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
+
 
 .destinations .card {
     background-color: #fff;
@@ -202,21 +201,15 @@
 }
 /* Estilos iniciales de la barra de navegación */
 nav {
-    position: fixed; /* Fija la barra de navegación en la parte superior */
     top: 0;
     left: 0;
     width: 100%;
-    background-color: transparent; /* Fondo transparente inicialmente */
+    background-color: #514c4c !important; /* Fondo transparente inicialmente */
     padding: 10px 0;
-    transition: background-color 0.3s ease-in-out; /* Transición suave para el cambio de color */
     z-index: 1000; /* Asegura que la barra de navegación esté por encima de otros elementos */
 }
 
-/* Estilos cuando se hace scroll */
-nav.scrolled {
-    background-color: #333; /* Cambia el color de fondo al hacer scroll */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Añade una sombra para resaltar la barra */
-}
+
 
 /* Estilos para los enlaces de la barra de navegación */
 ul.nav {
@@ -239,40 +232,12 @@ ul.nav li a, ul.nav li .btn {
     padding: 10px 20px;
     text-decoration: none;
     border-radius: 5px;
-    transition: background-color 0.2s ease-in-out;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, color 0.2s ease-in-out;
 }
 
 ul.nav li a:hover, ul.nav li .btn:hover {
-    background-color: #ff6f61;
-    color: white;
+    color: #FF6F61; /* El nuevo color del texto cuando pasa el ratón */
+    transform: scale(1.1); /* Aumenta el tamaño del texto */
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    ul.nav {
-        flex-direction: column;
-        align-items: flex-start;
-    }
 
-    ul.nav li {
-        margin: 5px 0;
-    }
-
-    .hero h1 {
-        font-size: 2.5em;
-    }
-
-    .hero p {
-        font-size: 1.2em;
-    }
-
-    .destinations .cards {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .destinations .card {
-        width: 80%;
-        margin-bottom: 20px;
-    }
-}

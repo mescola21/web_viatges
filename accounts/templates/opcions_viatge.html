@@ -29,6 +29,7 @@
                             <h2 class="card-title">{{ viatge.nom }}</h2>
                             <p class="card-text"><strong>País:</strong> {{ viatge.pais }}</p>
                             <p class="card-text"><strong>Continent:</strong> {{ viatge.continent }}</p>
+                            <a href="{% url 'reserva_viatge' viatge.nom %}" class="btn btn-primary">Reservar</a> <!-- Botón de reserva -->
                         </div>
                     </div>
                 </div>

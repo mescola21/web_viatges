@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="card shadow-sm" style="width: 100%; max-width: 500px; padding: 30px; border-radius: 10px;">
+        <h2 class="text-center mb-4">Reserva de Viaje</h2>
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label for="id_num_persones" class="form-label">Número de persones</label>
+                <input type="number" name="num_persones" class="form-control" id="id_num_persones" value="{{ form.num_persones.value }}">
+            </div>
+
+            <div class="mb-3">
+                <label for="id_data_inici" class="form-label">Data d'inici</label>
+                <input type="date" name="data_inici" class="form-control" id="id_data_inici" value="{{ form.data_inici.value }}">
+            </div>
+
+            <div class="mb-3">
+                <label for="id_data_fi" class="form-label">Data de fi</label>
+                <input type="date" name="data_fi" class="form-control" id="id_data_fi" value="{{ form.data_fi.value }}">
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Enviar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

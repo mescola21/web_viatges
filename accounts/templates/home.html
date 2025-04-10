@@ -72,7 +72,6 @@
             </div>
         </div>
     </div>
-
     <div class="newsletter">
         <h2>Subscriu-te al nostre butlletí</h2>
         <p>Rep les millors ofertes i inspiració directament al teu correu.</p>
@@ -82,23 +81,6 @@
         </form>
     </div>
 
-    <script>
 
-    // Detectar el scroll y cambiar el color de la navbar solo en home.html
-        document.addEventListener('DOMContentLoaded', function() {
-            if (document.body.classList.contains('home-page')) {
-                window.addEventListener('scroll', function() {
-                    const navbar = document.querySelector('nav');
-                    if (window.scrollY > 0) {
-                        navbar.classList.add('scrolled'); // Añadir clase cuando se hace scroll
-                    } else {
-                        navbar.classList.remove('scrolled'); // Eliminar clase cuando está al principio
-                    }
-                });
-            }
-
-        });
-
-    </script>
 </body>
 {% endblock %}

@@ -17,6 +17,7 @@ class Viatge(models.Model):
     destinacio = models.ForeignKey(Destinacio, on_delete=models.CASCADE, related_name="viatges")
     data_inici = models.DateField()
     data_fi = models.DateField()
+    num_persones = models.PositiveIntegerField()
     descripcio = models.TextField(blank=True, null=True)
 
 

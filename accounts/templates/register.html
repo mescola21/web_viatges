@@ -5,15 +5,36 @@
   <div class="row justify-content-center">
     <div class="col-md-6">
       <div class="card shadow-sm p-4">
-        <h2 class="text-center">Registrar-se</h2>
-        <form method="post">
+        <h2 class="text-center mb-4">Registrar-se</h2>
+        <form method="post" class="text-center">
           {% csrf_token %}
-          <div class="mb-3">
-            {{ form.as_p }}
+
+          <div class="mb-3 text-start">
+            <label for="id_username" class="form-label">Nom d'usuari</label>
+            <input type="text" name="username" id="id_username" class="form-control rounded-pill text-center" required>
           </div>
-          <button type="submit" class="btn btn-primary w-100">Registrar</button>
+
+          <div class="mb-3 text-start">
+            <label for="id_email" class="form-label">Correu electrònic</label>
+            <input type="email" name="email" id="id_email" class="form-control rounded-pill text-center">
+          </div>
+
+          <div class="mb-3 text-start">
+            <label for="id_password1" class="form-label">Contrasenya</label>
+            <input type="password" name="password1" id="id_password1" class="form-control rounded-pill text-center" required>
+          </div>
+
+          <div class="mb-3 text-start">
+            <label for="id_password2" class="form-label">Repeteix la contrasenya</label>
+            <input type="password" name="password2" id="id_password2" class="form-control rounded-pill text-center" required>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100 rounded-pill">Registrar</button>
         </form>
-        <p class="mt-3 text-center">Ja tens un compte? <a href="/accounts/login/" class="text-decoration-none">Inicia sessió aquí</a></p>
+        <p class="mt-3 text-center">
+          Ja tens un compte?
+          <a href="/accounts/login/" class="text-decoration-none">Inicia sessió aquí</a>
+        </p>
       </div>
     </div>
   </div>

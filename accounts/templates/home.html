@@ -25,7 +25,11 @@
     {% endif %}
 
     <div class="destinations">
-        <h2>Les destinacions més populars:</h2>
+        {% if user.is_authenticated %}
+            <h2>Que et semblen aquestes destinacions, {{ user.username }}?</h2>
+        {% else %}
+            <h2>Les destinacions més populars:</h2>
+        {% endif %}
         <div class="cards">
             <div class="card mb-4">
                 {% load static %}

@@ -1,11 +1,35 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>Inicia sessió</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Entrar</button>
-  </form>
-  <p>No tens compte? <a href="/accounts/register/">Registra't aquí</a></p>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h2 class="card-title text-center mb-4">Inicia sessió</h2>
+          <form method="post" class="text-center">
+            {% csrf_token %}
+
+            <div class="mb-3">
+              <label for="id_username" class="form-label">Usuari</label>
+              <input type="text" name="username" id="id_username" class="form-control rounded-pill text-center" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="id_password" class="form-label">Contrasenya</label>
+              <input type="password" name="password" id="id_password" class="form-control rounded-pill text-center" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 rounded-pill">Entrar</button>
+          </form>
+
+          <p class="mt-3 text-center">
+            No tens compte?
+            <a href="/accounts/register/">Registra't aquí</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

@@ -4,12 +4,14 @@ version = "0.1.0"
 description = ""
 authors = ["Miquel Baron <miquelbaron111@gmail.com>"]
 readme = "README.md"
-packages = [{ include = "web_viatges" }]  # Asegúrate de que el nombre coincide con la carpeta donde está manage.py
+# Ajustado el nombre de la carpeta al nombre correcto donde está el código de Django
+packages = [{ include = "DjangoProject" }]  # Cambié "web_viatges" por "DjangoProject"
 
 [tool.poetry.dependencies]
 python = ">=3.11"
-django = ">=5.1.7,<6.0.0"
+django = "5.1.8"
 pillow = "^11.1.0"
+requests = "2.32.3"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

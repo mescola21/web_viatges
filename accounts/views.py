@@ -102,3 +102,7 @@ def editar_perfil(request):
         form = PerfilUsuariForm(instance=perfil)
 
     return render(request, 'editar_perfil.html', {'form': form})
+
+@login_required
+def staff(request):
+    return render(request,'staff.html')

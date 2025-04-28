@@ -4,18 +4,53 @@
 <div class="container mt-5">
     <h1 class="text-center mb-5">Destinacions</h1>
 
-    <!-- Barra de filtres -->
-    <div class="row mb-4">
-        <div class="col-md-4">
-            <input type="text" id="filter-destinacio" class="form-control" placeholder="Filtrar per destinació">
-        </div>
-        <div class="col-md-4">
-            <input type="text" id="filter-pais" class="form-control" placeholder="Filtrar per país">
-        </div>
-        <div class="col-md-4">
-            <input type="text" id="filter-continent" class="form-control" placeholder="Filtrar per continent">
-        </div>
+<!-- Barra de filtres -->
+<div class="row mb-4">
+    <div class="col-md-4">
+        <input type="text" id="filter-destinacio" class="form-control" placeholder="Filtrar per destinació">
     </div>
+    <div class="col-md-4">
+        <input type="text" id="filter-pais" class="form-control" placeholder="Filtrar per país">
+    </div>
+    <div class="col-md-4">
+        <input type="text" id="filter-continent" class="form-control" placeholder="Filtrar per continent">
+    </div>
+</div>
+
+<!-- Afegim jQuery i jQuery UI (si no estan ja al teu projecte) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+<!-- Script per autocompletar -->
+<script>
+$(function() {
+    // Llistes d'exemples per cada camp
+    var destinacions = [
+        "Barcelona", "París", "Nova York", "Tòquio", "Londres", "Roma", "Dubai", "Singapur"
+    ];
+    var paisos = [
+        "Espanya", "França", "Estats Units", "Japó", "Regne Unit", "Itàlia", "Emirats Àrabs", "Singapur"
+    ];
+    var continents = [
+        "Europa", "Àsia", "Amèrica del Nord", "Amèrica del Sud", "Àfrica", "Oceania", "Antàrtida"
+    ];
+
+    // Activar autocompletar en cada input
+    $("#filter-destinacio").autocomplete({
+        source: destinacions
+    });
+
+    $("#filter-pais").autocomplete({
+        source: paisos
+    });
+
+    $("#filter-continent").autocomplete({
+        source: continents
+    });
+});
+</script>
+
 
     {% if viatges %}
         <div class="row" id="viatges-container">

@@ -15,6 +15,7 @@ def search_flights(origin, destination, departure_date):
             departureDate=departure_date,
             adults=1
         )
+        print(response.data)
         return response.data  # Retorna les dades dels vols
     except Exception as e:
         print(f"Error en l'API: {e}")

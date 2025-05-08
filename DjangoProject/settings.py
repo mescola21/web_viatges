@@ -132,12 +132,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-AMADEUS_API_KEY = os.getenv("AMADEUS_API_KEY")
-AMADEUS_API_SECRET = os.getenv("AMADEUS_API_SECRET")
+AMADEUS_API_KEY = "egcPrevceFb7yreadMHz1778b97kU3xY"
+AMADEUS_API_SECRET = "d5yyZhCabwzC1equ"
 
 
 # settings.py
 AMADEUS_CLIENT = {
-    'client_id': os.getenv("AMADEUS_API_KEY"),
-    'client_secret': os.getenv("AMADEUS_API_SECRET")
+    'client_id': AMADEUS_API_KEY,
+    'client_secret': AMADEUS_API_SECRET
 }

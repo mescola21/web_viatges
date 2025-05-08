@@ -4,6 +4,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 
+
+from .api import search_flights
 from .models import *
 from .forms import *
 def register(request):
@@ -106,3 +108,22 @@ def editar_perfil(request):
 @login_required
 def staff(request):
     return render(request,'staff.html')
+
+# accounts/views.py
+from django.shortcuts import render
+from .api import search_flights
+
+def flight_search(request):
+    """
+    Vista que processa el formulari de cerca i mostra els resultats.
+    """
+    if request.method == 'POST':
+        origin = request.POST.get('origin')
+        destination = request.POST.get('destination')
+        date = request.POST.get('departure_date')
+
+        flights = search_flights(origin, destination, date)
+        return render(request, 'flights/results.html', {'flights': flights})
+
+    # GET: mostrar el formulari
+    return render(request, 'flights/search_form.html')

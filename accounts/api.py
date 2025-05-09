@@ -15,8 +15,10 @@ def search_flights(origin, destination, departure_date):
             departureDate=departure_date,
             adults=1
         )
-        ic(response.data)
+        ic("Response from Amadeus shopping offers search ok")
         return response.data
     except Exception as e:
         ic(e)
         return []
+
+

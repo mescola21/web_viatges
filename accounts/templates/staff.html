@@ -1,7 +1,48 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
-staff
+    <!-- Contenido principal de la vista de staff -->
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Afegir un nou destí</h2>
 
+        <!-- Formulario para añadir un nuevo destino -->
+        <div class="d-flex justify-content-center">
+            <div class="col-md-6">
+                <form method="POST" action="{% url 'staff' %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="nom" class="form-label">Nom del Destí</label>
+                        <input type="text" class="form-control" id="nom" name="nom" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="pais" class="form-label">País</label>
+                        <input type="text" class="form-control" id="pais" name="pais" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="continent" class="form-label">Continent</label>
+                        <input type="text" class="form-control" id="continent" name="continent" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Afegir Destí</button>
+                </form>
+            </div>
+        </div>
 
+        <!-- Mostrar la lista de destinos -->
+        <h3 class="mt-5">Destins actuals</h3>
+        <ul class="list-group">
+            {% for destinacio in destinos %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ destinacio.nom }} ({{ destinacio.pais }})
+                    <!-- Formulario para eliminar el destino -->
+                    <form method="POST" action="{% url 'staff' %}" style="display: inline;">
+                        {% csrf_token %}
+                        <input type="hidden" name="dest_id" value="{{ destinacio.id }}">
+                        <button type="submit" name="delete" class="btn btn-danger btn-sm">Eliminar</button>
+                    </form>
+                </li>
+            {% empty %}
+                <li class="list-group-item">Encara no hi ha cap destí afegit.</li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}

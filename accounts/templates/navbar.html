@@ -9,6 +9,8 @@
                 <a class="nav-link" href="{% url 'viatges' %}">Destinacions</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="{% url 'flight_search' %}">Vols</a>
+            </li>
             <li class="nav-item">
                 <form action="{% url 'logout' %}" method="post" class="d-inline">
                     {% csrf_token %}
@@ -19,10 +21,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'staff' %}">Staff</a>
                 </li>
-
-
             {% endif %}
-
         {% else %}
             <li class="nav-item"><a class="nav-link" href="/accounts/login/">Login</a></li>
             <li class="nav-item"><a class="nav-link" href="/accounts/register/">Registre</a></li>

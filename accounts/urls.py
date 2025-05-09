@@ -17,4 +17,5 @@ urlpatterns = [
     path('editar_perfil', views.editar_perfil, name='editar_perfil'),
     path('staff/', views.staff, name='staff'),
     path('search-flights/', flight_search, name='flight_search'),
+
 ]

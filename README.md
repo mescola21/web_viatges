@@ -42,6 +42,10 @@ web_viatges/
     
         docker-compose up
     
+    Instead do:
+        docker-compose up --build
+        
+        
     Open your browser and go to http://127.0.0.1:8000/ to see the project running.
 
     Usage:

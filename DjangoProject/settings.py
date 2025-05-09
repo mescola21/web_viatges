@@ -10,9 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import os
-from dotenv import load_dotenv
 from pathlib import Path
-load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -39,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -132,8 +131,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-AMADEUS_API_KEY = "egcPrevceFb7yreadMHz1778b97kU3xY"
-AMADEUS_API_SECRET = "d5yyZhCabwzC1equ"
+AMADEUS_API_KEY = "egGP9exeeFh7ymwoUHztj77BsD7lu1xY"
+
+AMADEUS_API_SECRET = "BtyU7OCmUvzCtcgL"
 
 
 # settings.py

@@ -1,9 +1,10 @@
+from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
-
+from .api import *
 
 from .api import search_flights
 from .models import *
@@ -105,25 +106,47 @@ def editar_perfil(request):
 
     return render(request, 'editar_perfil.html', {'form': form})
 
-@login_required
+@staff_member_required
 def staff(request):
-    return render(request,'staff.html')
+    if request.method == "POST":
+        if 'delete' in request.POST:
+            destinacio_id = request.POST.get("dest_id")
+            try:
+                destinacio = Destinacio.objects.get(id=destinacio_id)
+                destinacio.delete()
+            except Destinacio.DoesNotExist:
+                pass  # O manejar el error como desees
+
+        # Otras acciones para agregar un destino
+        else:
+            nom = request.POST.get("nom")
+            pais = request.POST.get("pais")
+            continent = request.POST.get("continent")
+
+            # Asegurarse de que los campos no estén vacíos
+            if nom and pais and continent:
+                Destinacio.objects.create(nom=nom, pais=pais, continent=continent)
+
+        return redirect('staff')
+
+    destinos = Destinacio.objects.all()
+    return render(request, 'staff.html', {'destinos': destinos})
+
 
 # accounts/views.py
-from django.shortcuts import render
-from .api import search_flights
+
 
 def flight_search(request):
-    """
-    Vista que processa el formulari de cerca i mostra els resultats.
-    """
     if request.method == 'POST':
-        origin = request.POST.get('origin')
-        destination = request.POST.get('destination')
-        date = request.POST.get('departure_date')
+        form = FlightSearchForm(request.POST)
+        if form.is_valid():
+            origin = form.cleaned_data['origin']
+            destination = form.cleaned_data['destination']
+            date = form.cleaned_data['departure_date']
 
-        flights = search_flights(origin, destination, date)
-        return render(request, 'flights/results.html', {'flights': flights})
+            flights = search_flights(origin, destination, date)
+            return render(request, 'flights/results.html', {'flights': flights})
+    else:
+        form = FlightSearchForm()
 
-    # GET: mostrar el formulari
-    return render(request, 'flights/search_form.html')
+    return render(request, 'flights/search_form.html', {'form': form})

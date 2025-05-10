@@ -33,6 +33,10 @@ web_viatges/
     
         git clone https://github.com/mescola21/web_viatges/tree/miquel
         cd web_viatges
+        
+    Generate destination instances
+        
+        poetry run python manage.py generate_destinacions
     
     From the project root directory, build the Docker image using docker-compose:
     

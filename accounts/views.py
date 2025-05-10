@@ -106,6 +106,21 @@ def editar_perfil(request):
 
     return render(request, 'editar_perfil.html', {'form': form})
 
+@login_required
+def editar_viatge(request, viatge_id):
+    viatge = get_object_or_404(Viatge, id=viatge_id, user=request.user)
+
+    if request.method == 'POST':
+        form = EditarViatgeForm(request.POST, instance=viatge)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = EditarViatgeForm(instance=viatge)
+
+    return render(request, 'editar_viatge.html', {'form': form, 'viatge': viatge})
+
+
 @staff_member_required
 def staff(request):
     if request.method == "POST":

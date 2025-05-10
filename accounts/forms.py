@@ -36,6 +36,15 @@ class ViatgeForm(forms.ModelForm):
         model = Viatge
         fields = ['user', 'destinacio', 'data_inici', 'data_fi', 'num_persones', 'descripcio']
 
+class EditarViatgeForm(forms.ModelForm):
+    class Meta:
+        model = Viatge
+        fields = ['destinacio', 'data_inici', 'data_fi', 'num_persones']
+        widgets = {
+            'data_inici': forms.DateInput(attrs={'type': 'date'}),
+            'data_fi': forms.DateInput(attrs={'type': 'date'}),
+        }
+
 class FlightSearchForm(forms.Form):
     AIRPORT_CHOICES = [
         ("BCN", "Barcelona (BCN)"),

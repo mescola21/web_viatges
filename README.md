@@ -79,7 +79,7 @@ web_viatges/
 -Collaborators
 
 Gerard Domenech: API developement and mantainance
-Miquel Baron: integrating api into the frontend, managing database models instances, frontend developement, reserving destinations feature, migrations
-Marc Escolà: login, register, 1st iteration basic navigation, tests
-Arnau Fernàndez: tests
-Albert Perez: tests
+Miquel Baron: integrating api into the frontend, managing database models instances (CRUD), frontend developement, navigation, reserving destinations feature, editing profile feature, staff view feature, migrations...
+Marc Escolà: 1st iteration basic navigation, login, register and e2e tests
+Arnau Fernàndez: e2e tests
+Albert Perez: e2e tests

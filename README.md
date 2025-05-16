@@ -75,4 +75,11 @@ web_viatges/
 -Project Goals:
 
     This project serves as a practice application for learning Django and web development, showcasing skills in user management, static files handling, and creating a functional web platform.
-    
+   
+-Collaborators
+
+Gerard Domenech: API developement and mantainance
+Miquel Baron: integrating api into the frontend, managing database models instances, frontend developement, reserving destinations feature, migrations
+Marc Escolà: login, register, 1st iteration basic navigation, tests
+Arnau Fernàndez: tests
+Albert Perez: tests

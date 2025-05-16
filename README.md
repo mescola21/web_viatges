@@ -76,10 +76,10 @@ web_viatges/
 
     This project serves as a practice application for learning Django and web development, showcasing skills in user management, static files handling, and creating a functional web platform.
    
--Collaborators
+## Collaborators
 
-Gerard Domenech: API developement and mantainance
-Miquel Baron: integrating api into the frontend, managing database models instances (CRUD), frontend developement, navigation, reserving destinations feature, editing profile feature, staff view feature, migrations...
-Marc Escolà: 1st iteration basic navigation, login, register and e2e tests
-Arnau Fernàndez: e2e tests
-Albert Perez: e2e tests
+- **Gerard Domenech**: API development, mantainance and general project cordination and support.
+- **Miquel Baron**: Integration of the API into the frontend, management of database model instances (CRUD), frontend development, navigation, destination reservation feature, profile editing, staff view feature, migrations, and general project coordination.
+- **Marc Escolà**: Initial setup including basic navigation, login, register, and early-stage work on end-to-end (e2e) tests.
+- **Arnau Fernàndez**: Assigned to end-to-end (e2e) testing.
+- **Albert Pérez**: Assigned to end-to-end (e2e) testing.

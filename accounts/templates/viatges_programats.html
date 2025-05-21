@@ -8,12 +8,16 @@
         <div class="row">
             {% for viatge in viatges %}
                 <div class="col-md-4 mb-4">
-                    <div class="card shadow-sm">
+                    <div class="card shadow-sm" vocab="https://schema.org/" typeof="Trip">
                         <div class="card-body">
-                            <h2 class="card-title">{{ viatge.destinacio }}</h2>
-                            <p class="card-text"><strong>Inici:</strong> {{ viatge.data_inici }}</p>
-                            <p class="card-text"><strong>Fi:</strong> {{ viatge.data_fi }}</p>
-                            <p class="card-text">{{ viatge.descripcio }}</p>
+                            <h2 class="card-title" property="name">{{ viatge.destinacio }}</h2>
+                            <p class="card-text"><strong>Inici:</strong>
+                                <time property="startDate" datetime="{{ viatge.data_inici }}">{{ viatge.data_inici }}</time>
+                            </p>
+                            <p class="card-text"><strong>Fi:</strong>
+                                <time property="endDate" datetime="{{ viatge.data_fi }}">{{ viatge.data_fi }}</time>
+                            </p>
+                            <p class="card-text" property="description">{{ viatge.descripcio }}</p>
                         </div>
                     </div>
                 </div>

@@ -9,22 +9,34 @@
     <div class="row" id="flights-container">
       {% for v in flights %}
         <div class="col-md-4 mb-4 viatge-card">
-          <div class="card shadow-sm">
+          <div class="card shadow-sm" vocab="https://schema.org/" typeof="Flight">
             <div class="card-body">
               {% with seg=v.itineraries.0.segments|last %}
                 <h5 class="card-title">
-                  {{ v.itineraries.0.segments.0.departure.iataCode }}
+                  <span property="departureAirport" typeof="Airport">
+                    <span property="iataCode">{{ v.itineraries.0.segments.0.departure.iataCode }}</span>
+                  </span>
                   &rarr;
-                  {{ seg.arrival.iataCode }}
+                  <span property="arrivalAirport" typeof="Airport">
+                    <span property="iataCode">{{ seg.arrival.iataCode }}</span>
+                  </span>
                 </h5>
               {% endwith %}
               <p class="card-text mb-2">
-                <strong>Sortida:</strong> {{ v.itineraries.0.segments.0.departure.at|slice:":10" }}<br>
-                <strong>Preu:</strong> {{ v.price.total }} {{ v.price.currency }}
+                <strong>Sortida:</strong>
+                <time property="departureTime" datetime="{{ v.itineraries.0.segments.0.departure.at }}">
+                  {{ v.itineraries.0.segments.0.departure.at|slice:":10" }}
+                </time><br>
+                <strong>Preu:</strong>
+                <span property="price">{{ v.price.total }}</span>
+                <meta property="priceCurrency" content="{{ v.price.currency }}">
+                {{ v.price.currency }}
               </p>
             </div>
             <div class="card-footer bg-light text-end">
-              <small class="text-muted">{{ v.numberOfBookableSeats }} places disponibles</small>
+              <small class="text-muted">
+                <span property="numberOfPassengers">{{ v.numberOfBookableSeats }}</span> places disponibles
+              </small>
             </div>
           </div>
         </div>

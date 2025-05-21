@@ -31,21 +31,21 @@
             <h2>Les destinacions més populars:</h2>
         {% endif %}
         <div class="cards">
-            <div class="card mb-4">
+            <div class="card mb-4" vocab="https://schema.org/" typeof="Place">
                 {% load static %}
                 <img src="{% static 'images/paris.jpg' %}" alt="París">
-                <h3>París</h3>
-                <p>Descobreix la ciutat de l'amor.</p>
+                <h3 property="name">París</h3>
+                <p property="description">Descobreix la ciutat de l'amor.</p>
             </div>
-            <div class="card mb-4">
+            <div class="card mb-4" vocab="https://schema.org/" typeof="Place">
                 <img src="{% static 'images/bali.jpg' %}" alt="Bali">
-                <h3>Bali</h3>
-                <p>Gaudeix d'un paradís tropical.</p>
+                <h3 property="name">Bali</h3>
+                <p property="description">Gaudeix d'un paradís tropical.</p>
             </div>
-            <div class="card mb-4">
+            <div class="card mb-4" vocab="https://schema.org/" typeof="Place">
                 <img src="{% static 'images/newyork.jpg' %}" alt="Nova York">
-                <h3>Nova York</h3>
-                <p>Explora la ciutat que mai dorm.</p>
+                <h3 property="name">Nova York</h3>
+                <p property="description">Explora la ciutat que mai dorm.</p>
             </div>
         </div>
     </div>
@@ -84,7 +84,6 @@
             <button type="submit" class="btn btn-light">Subscriu-te</button>
         </form>
     </div>
-
 
 </body>
 {% endblock %}

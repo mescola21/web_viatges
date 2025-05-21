@@ -24,7 +24,6 @@
 <!-- Script per autocompletar -->
 <script>
 $(function() {
-    // Llistes d'exemples per cada camp
     var destinacions = [
         "Barcelona", "París", "Nova York", "Tòquio", "Londres", "Roma", "Dubai", "Singapur"
     ];
@@ -35,21 +34,11 @@ $(function() {
         "Europa", "Àsia", "Amèrica del Nord", "Amèrica del Sud", "Àfrica", "Oceania", "Antàrtida"
     ];
 
-    // Activar autocompletar en cada input
-    $("#filter-destinacio").autocomplete({
-        source: destinacions
-    });
-
-    $("#filter-pais").autocomplete({
-        source: paisos
-    });
-
-    $("#filter-continent").autocomplete({
-        source: continents
-    });
+    $("#filter-destinacio").autocomplete({ source: destinacions });
+    $("#filter-pais").autocomplete({ source: paisos });
+    $("#filter-continent").autocomplete({ source: continents });
 });
 </script>
-
 
     {% if viatges %}
         <div class="row" id="viatges-container">
@@ -62,9 +51,14 @@ $(function() {
                     <div class="card shadow-sm" vocab="https://schema.org/" typeof="Trip">
                         <div class="card-body">
                             <h2 class="card-title" property="name">{{ viatge.nom }}</h2>
-                            <p class="card-text"><strong>País:</strong> {{ viatge.pais }}</p>
+                            <p class="card-text">
+                                <strong>País:</strong>
+                                <span property="departureLocation" typeof="Place">
+                                    <span property="addressCountry">{{ viatge.pais }}</span>
+                                </span>
+                            </p>
                             <p class="card-text"><strong>Continent:</strong> {{ viatge.continent }}</p>
-                            <a href="{% url 'reserva_viatge' viatge.nom %}" class="btn btn-primary">Reservar</a> <!-- Botón de reserva -->
+                            <a href="{% url 'reserva_viatge' viatge.nom %}" class="btn btn-primary">Reservar</a>
                         </div>
                     </div>
                 </div>
@@ -100,3 +94,6 @@ $(function() {
     });
 </script>
 {% endblock %}
+
+
+

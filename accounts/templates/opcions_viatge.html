@@ -58,9 +58,10 @@ $(function() {
                      data-destinacio="{{ viatge.nom|lower }}"
                      data-pais="{{ viatge.pais|lower }}"
                      data-continent="{{ viatge.continent|lower }}">
-                    <div class="card shadow-sm">
+
+                    <div class="card shadow-sm" vocab="https://schema.org/" typeof="Trip">
                         <div class="card-body">
-                            <h2 class="card-title">{{ viatge.nom }}</h2>
+                            <h2 class="card-title" property="name">{{ viatge.nom }}</h2>
                             <p class="card-text"><strong>País:</strong> {{ viatge.pais }}</p>
                             <p class="card-text"><strong>Continent:</strong> {{ viatge.continent }}</p>
                             <a href="{% url 'reserva_viatge' viatge.nom %}" class="btn btn-primary">Reservar</a> <!-- Botón de reserva -->
@@ -72,8 +73,6 @@ $(function() {
     {% else %}
         <p class="text-center">No tens cap viatge programat.</p>
     {% endif %}
-
-
 </div>
 
 <script>

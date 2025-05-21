@@ -2,7 +2,8 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h1 class="text-center mb-5">Perfil de {{ user.perfil.nom_complet }}</h1>
+  <div vocab="https://schema.org/" typeof="Person">
+    <h1 class="text-center mb-5" property="name">Perfil de {{ user.perfil.nom_complet }}</h1>
     <div class="row">
         <div class="col-md-4">
             <div class="card shadow-sm">
@@ -11,11 +12,11 @@
                     <img src="https://via.placeholder.com/150" alt="Foto de perfil predeterminada" class="img-fluid rounded-circle mb-3" width="150" height="150">
 
                     <h4 class="card-title">{{ user.username }}</h4>
-                    <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
-                    <p class="card-text"><strong>Nom complet:</strong> {{ user.perfil.nom_complet }}</p>
-                    <p class="card-text"><strong>País d'origen:</strong> {{ user.perfil.pais_origen }}</p>
-                    <p class="card-text"><strong>Data de naixement:</strong> {{ user.perfil.data_naixement }}</p>
-                    <p class="card-text"><strong>Descripció:</strong> {{ user.perfil.descripcion }}</p>
+                    <p class="card-text" property="email"><strong>Email:</strong> {{ user.email }}</p>
+                    <p class="card-text" property="name"><strong>Nom complet:</strong> {{ user.perfil.nom_complet }}</p>
+                    <p class="card-text" property="birthPlace"><strong>País d'origen:</strong> {{ user.perfil.pais_origen }}</p>
+                    <p class="card-text" property="birthDate"><strong>Data de naixement:</strong> {{ user.perfil.data_naixement }}</p>
+                    <p class="card-text" property="description"><strong>Descripció:</strong> {{ user.perfil.descripcion }}</p>
                     <a href="{% url 'editar_perfil' %}" class="btn btn-primary btn-sm">Editar perfil</a>
                 </div>
             </div>
@@ -41,23 +42,33 @@
                             </thead>
                             <tbody>
                                 {% for viatge in viatges %}
-                                    <tr>
-                                        <td>{{ viatge.destinacio }}</td>
-                                        <td>{{ viatge.data_inici }}</td>
-                                        <td>{{ viatge.data_fi }}</td>
-                                        <td>{{ viatge.num_persones }}</td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <a href="{% url 'editar_viatge' viatge.id %}" class="btn btn-warning btn-sm me-2">Editar</a>
-                                                <form action="{% url 'eliminar_viatge' viatge.id %}" method="POST" onsubmit="return confirm('Estàs segur que vols eliminar aquest viatge?');">
-                                                    {% csrf_token %}
-                                                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                                                </form>
-                                            </div>
-                                        </td>
-
-                                    </tr>
-                                {% endfor %}
+                              <!-- Cada viatge és un Trip -->
+                              <tr vocab="https://schema.org/" typeof="Trip">
+                                <!-- La destinació és un lloc -->
+                                <td property="location" typeof="Place">
+                                  <span property="name">{{ viatge.destinacio.nom }}</span>,
+                                  <span property="addressCountry">{{ viatge.destinacio.pais }}</span>
+                                </td>
+                                <td><time property="startDate" datetime="{{ viatge.data_inici }}">{{ viatge.data_inici }}</time></td>
+                                <td><time property="endDate" datetime="{{ viatge.data_fi }}">{{ viatge.data_fi }}</time></td>
+                                <td>
+                                  <span property="additionalProperty" typeof="PropertyValue">
+                                    <meta property="name" content="num_persones">
+                                    <meta property="value" content="{{ viatge.num_persones }}">
+                                    {{ viatge.num_persones }}
+                                  </span>
+                                </td>
+                                <td>
+                                  <div class="d-flex">
+                                    <a href="{% url 'editar_viatge' viatge.id %}" class="btn btn-warning btn-sm me-2">Editar</a>
+                                    <form action="{% url 'eliminar_viatge' viatge.id %}" method="POST" onsubmit="return confirm('Estàs segur que vols eliminar aquest viatge?');">
+                                      {% csrf_token %}
+                                      <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                    </form>
+                                  </div>
+                                </td>
+                              </tr>
+                              {% endfor %}
                             </tbody>
                         </table>
                     </div>
